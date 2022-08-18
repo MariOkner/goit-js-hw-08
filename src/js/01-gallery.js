@@ -1,5 +1,4 @@
-// import SimpleLightbox from "simplelightbox";
-const SimpleLightbox = require('simpleLightbox');
+import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 // Add imports above this line
 import { galleryItems } from './gallery-items';
@@ -8,7 +7,7 @@ import { galleryItems } from './gallery-items';
 // console.log(galleryItems);
 
 document.addEventListener('keydown', onKeyDown);
-const lightbox = basicLightbox.create('');
+const lightbox = SimpleLightbox.create('');
 
 const galleryEl = document.querySelector('.gallery');
 const galleryImages = createGallery(galleryItems);
