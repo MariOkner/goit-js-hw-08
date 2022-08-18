@@ -6,15 +6,12 @@ import { galleryItems } from './gallery-items';
 
 // console.log(galleryItems);
 
-document.addEventListener('keydown', onKeyDown);
-const lightbox = SimpleLightbox.create('');
-
 const galleryEl = document.querySelector('.gallery');
 const galleryImages = createGallery(galleryItems);
 
 galleryEl.insertAdjacentHTML('beforeend', galleryImages);
 
-galleryEl.addEventListener('click', onGalleryClick);
+galleryEl.addEventListener('click', onGalleryClick)
 
 function createGallery() {
     return galleryItems.map(({preview, original, description}) => {
@@ -24,10 +21,10 @@ function createGallery() {
                 <img 
                     class="gallery__image"
                     src="${preview}"
-                    data-source="${original}"
                     alt="${description}"
+                    title="${description}"
                 />
-            </a>    
+            </a>
         </li>
         `; 
     }).join('');  
@@ -35,19 +32,16 @@ function createGallery() {
 
 function onGalleryClick(event) {
     event.preventDefault();
-    if(event.target.nodeName !== 'IMG') return;
-    
-    lightbox.element().innerHTML = 
-    `<img class="active"
-        src="${event.target.dataset.source}" width="800" height="600"
-    />`;
-    lightbox.show();
+    if (event.target.nodeName !== 'IMG') return;
 }
 
-function onKeyDown(event) {
-    const ESC_KEY_CODE = 'Escape';
-    if (event.code === ESC_KEY_CODE) {
-        lightbox.close();
-    }
-}
-
+const lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionSelector: 'img',
+    captionType: 'tittle',
+    captionPosition: 'bottom',
+    captionDelay: 250,
+    className: 'lightbox',
+    enableKeyboard: true,   
+});
+    lightbox.next();
