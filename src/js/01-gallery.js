@@ -35,7 +35,7 @@ function onGalleryClick(event) {
     if (event.target.nodeName !== 'IMG') return;
 }
 
-const lightbox = new SimpleLightbox('.gallery a', {
+new SimpleLightbox('.gallery a', {
     captions: true,
     captionSelector: 'img',
     captionType: 'tittle',
@@ -44,4 +44,4 @@ const lightbox = new SimpleLightbox('.gallery a', {
     className: 'lightbox',
     enableKeyboard: true,   
 });
-    lightbox.next();
+    // lightbox.next();
