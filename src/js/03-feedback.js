@@ -1,41 +1,50 @@
 import throttle from 'lodash.throttle';
-// import '../css/common.css';
-// import '../css/03-feedback.css';
-const FEETBACK_KEY = 'feedback-form-state';
+import '../css/common.css';
+import '../css/03-feedback.css';
+const FEEDBACK_KEY = 'feedback-form-state';
+// const EMAIL_KEY = 'feedback-email';
 
-const refs = {
-    form: document.querySelector('.feedback-form'),
-    textarea: document.querySelector('.feedback-form textarea'),
+const formEl = document.querySelector('.feedback-form');
+// const emailEl = document.querySelector('input');
+const textareaEl = document.querySelector('textarea');
+// console.log(inputEl);
+// console.log(formEl);
+// console.log(textareaEl);
+const formData = {};
+
+populateTextarea();
+
+formEl.addEventListener('submit', onFormSubmit);
+// emailEl.addEventListener('input', onEmailInput);
+textareaEl.addEventListener('input', throttle(onTextareaInput, 500));
+
+formEl.addEventListener('input', event => {
+    formData[event.target.name] = event.target.value;
+    // console.log(formData);
+});
+
+function onFormSubmit(event) {
+    event.preventDefault();
+
+    event.target.reset();
+
+    localStorage.removeItem(FEEDBACK_KEY);
 };
 
-refs.form.addEventListener('submit', onFormSubmit);
-refs.textarea.addEventListener('input', throttle(onTextareaInput, 500));
-
-
-function onFormSubmit(e) {
-    e.preventDefault();
-
-    console.log('Отправляем форму');
-    e.currentTarget.reset();
-    localStorage.removeItem('FEETBACK_KEY');
-}
-
-
-function onTextareaInput(e) {
-    const message = e.target.value;
-    // console.log(message);
-
-    localStorage.setItem('FEETBACK_KEY', message);
-    
-}
-
+function onTextareaInput(event) {
+    // const message = event.target.value;
+    localStorage.setItem(FEEDBACK_KEY, JSON.stringify(formData));
+};
 
 function populateTextarea() {
-    const saveMessage = localStorage.getItem('FEETBACK_KEY');
-    
+    const saveMessage = JSON.parse(localStorage.getItem(FEEDBACK_KEY));
+    console.log(saveMessage);
+
     if (saveMessage) {
         console.log(saveMessage);
-        refs.textarea.value = saveMessage;    
-    }
+        textareaEl.value = saveMessage;
+    };
+};
 
-}
+// const parseData = JSON.parse(saveMessage);
+// console.log(parseData);

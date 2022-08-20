@@ -9,7 +9,7 @@ const STORAGE_KEY = 'videoplayer-current-time';
 console.log(+localStorage.getItem(STORAGE_KEY));
 
 player.setCurrentTime(+localStorage.getItem(STORAGE_KEY));
-// 2-вариант
+// 2-варіант
 // player.setCurrentTime(localStorage.getItem(STORAGE_KEY || 0));
 
 player.on('timeupdate', throttle(onTimeupdate, 1000));
