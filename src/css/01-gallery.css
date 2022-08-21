@@ -41,3 +41,7 @@
 .gallery__link:hover {
     cursor: zoom-in;
 }
+
+.lightbox {
+    background-color: rgba(255, 192, 203, 0.459);
+}

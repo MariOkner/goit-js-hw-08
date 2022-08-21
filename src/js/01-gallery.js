@@ -41,6 +41,7 @@ new SimpleLightbox('.gallery a', {
     captionType: 'tittle',
     captionPosition: 'bottom',
     captionDelay: 250,
+    captionClass: 'lightbox__padding',
     className: 'lightbox',
     enableKeyboard: true,   
 });

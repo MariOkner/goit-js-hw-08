@@ -15,6 +15,7 @@
 }
 
 .feedback-form button {
+    border-radius: 4px;
     padding: 8px 12px;
     font: inherit;
     cursor: pointer;
@@ -22,10 +23,26 @@
 
 input,
 textarea {
+    border-radius: 4px;
     padding: 8px;
     font: inherit;
 }
 
+input:hover,
+input:focus {
+    background-color: rgb(255, 148, 148);
+    border: 3px solid #5ab95d;
+}
+
+textarea:hover,
+textarea:focus {
+    border: 3px solid #5ab95d;
+}
+
 textarea {
     resize: none;
+}
+
+.submit:hover {
+    background-color: #5ab95d;
 }
