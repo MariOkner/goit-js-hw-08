@@ -28,21 +28,35 @@ textarea {
     font: inherit;
 }
 
-input:hover,
+
 input:focus {
-    background-color: rgb(255, 148, 148);
     border: 3px solid #5ab95d;
+    outline: none;
 }
 
-textarea:hover,
+
 textarea:focus {
     border: 3px solid #5ab95d;
+    outline: none;
 }
 
 textarea {
     resize: none;
 }
 
+.submit {
+    /* transition: 0.2s; */
+}
+
 .submit:hover {
+    border: none;
     background-color: #5ab95d;
+    /* transform: translateY(-3px); */
+    /* box-shadow: 0 7px 0 darkgreen; */
+}
+
+.submit:active {
+    /* transform: translateY(-1px); */
+    box-shadow: 0 0 6px 1px darkgreen;
+
 }
